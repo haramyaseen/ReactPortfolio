@@ -1,0 +1,317 @@
+.footer-section {
+  position: relative;
+
+  min-height: 70vh;
+
+  overflow: hidden;
+
+  padding:
+    120px 7vw 35px;
+
+  background: #050407;
+
+  color: #eee7f1;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.07);
+}
+
+
+/* GIANT H */
+
+.footer-giant-h {
+  position: absolute;
+
+  right: -3vw;
+  bottom: -13vw;
+
+  font-size:
+    clamp(
+      350px,
+      60vw,
+      900px
+    );
+
+  line-height: .7;
+
+  font-weight: 900;
+
+  letter-spacing: -50px;
+
+  color:
+    rgba(185,92,255,.025);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* TOP */
+
+.footer-top {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr 1fr;
+
+  gap: 60px;
+
+  padding-bottom: 100px;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+
+/* BRAND */
+
+.footer-logo {
+  font-size:
+    clamp(45px, 6vw, 80px);
+
+  font-weight: 900;
+
+  letter-spacing: -5px;
+}
+
+.footer-logo span {
+  color: #b85cff;
+}
+
+
+.footer-brand p {
+  margin-top: 25px;
+
+  color: #716a76;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 7px;
+
+  line-height: 2;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* NAV */
+
+.footer-nav,
+.footer-socials {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 15px;
+}
+
+
+.footer-nav a,
+.footer-socials a {
+  color: #aaa1ad;
+
+  text-decoration: none;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  transition:
+    color .3s ease,
+    transform .3s ease;
+}
+
+
+.footer-nav a:hover,
+.footer-socials a:hover {
+  color: #b85cff;
+
+  transform:
+    translateX(7px);
+}
+
+
+.footer-socials span {
+  margin-bottom: 10px;
+
+  color: #514b55;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+}
+
+
+/* MIDDLE */
+
+.footer-middle {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    55px 0;
+}
+
+
+.footer-middle p {
+  margin: 0;
+
+  color: #6d6672;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  line-height: 1.8;
+
+  letter-spacing: 1px;
+}
+
+
+.footer-top-button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 15px 20px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  background: transparent;
+
+  color: #aaa1ad;
+
+  cursor: pointer;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+
+  transition:
+    .4s ease;
+}
+
+
+.footer-top-button span {
+  color: #b85cff;
+
+  font-size: 16px;
+}
+
+
+.footer-top-button:hover {
+  border-color:
+    rgba(185,92,255,.5);
+
+  color: #fff;
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* BOTTOM */
+
+.footer-bottom {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 25px;
+
+  color: #4e4852;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 1px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .footer-section {
+    min-height: auto;
+
+    padding:
+      90px 20px 25px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+
+    padding-bottom: 60px;
+  }
+
+  .footer-logo {
+    font-size: 55px;
+  }
+
+  .footer-middle {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 35px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .footer-giant-h {
+    font-size: 500px;
+
+    bottom: -80px;
+  }
+
+}

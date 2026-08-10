@@ -1,0 +1,1217 @@
+.experience-section {
+  position: relative;
+  min-height: 100vh;
+
+  padding:
+    170px 6vw
+    160px;
+
+  overflow: hidden;
+
+  background:
+    #050505;
+
+  isolation: isolate;
+}
+
+
+/* =================================
+   BACKGROUND
+================================= */
+
+.experience-grid-bg {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -5;
+
+  opacity: 0.055;
+
+  background-image:
+    linear-gradient(
+      rgba(190, 100, 255, 0.3) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(190, 100, 255, 0.3) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    75px 75px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 95%
+    );
+}
+
+
+.experience-orb {
+  position: absolute;
+
+  width: 550px;
+  height: 550px;
+
+  top: 30%;
+  right: -300px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(173, 68, 255, 0.2),
+      rgba(110, 30, 180, 0.05) 45%,
+      transparent 70%
+    );
+
+  filter:
+    blur(20px);
+
+  z-index: -3;
+}
+
+
+.experience-big-number {
+  position: absolute;
+
+  top: 8%;
+  left: -5vw;
+
+  color:
+    rgba(255,255,255,0.025);
+
+  font-size:
+    clamp(
+      15rem,
+      30vw,
+      35rem
+    );
+
+  font-weight: 900;
+
+  line-height: .8;
+
+  letter-spacing:
+    -35px;
+
+  pointer-events: none;
+
+  z-index: -2;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.experience-header {
+  max-width: 1350px;
+
+  margin:
+    0 auto
+    170px;
+}
+
+
+.experience-eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  color:
+    #827987;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+
+.experience-eyebrow span {
+  color:
+    #bd62ff;
+}
+
+
+.experience-heading {
+  display: flex;
+
+  flex-direction: column;
+
+  margin:
+    30px 0 0;
+
+  color: #eee;
+
+  font-size:
+    clamp(
+      4rem,
+      9vw,
+      9.5rem
+    );
+
+  font-weight: 900;
+
+  line-height:
+    .77;
+
+  letter-spacing:
+    -8px;
+
+  overflow: hidden;
+}
+
+
+.experience-heading span:nth-child(2) {
+  color:
+    #b95cff;
+}
+
+
+.experience-heading span:nth-child(3) {
+  margin-left:
+    8vw;
+}
+
+
+.experience-intro {
+  max-width: 520px;
+
+  margin-top: 40px;
+
+  color:
+    #817985;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+}
+
+
+/* =================================
+   TIMELINE
+================================= */
+
+.timeline {
+  position: relative;
+
+  max-width: 1250px;
+
+  margin:
+    0 auto;
+
+  padding:
+    30px 0 100px;
+}
+
+
+.timeline-track,
+.timeline-progress {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: 50%;
+
+  width: 1px;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.timeline-track {
+  background:
+    rgba(255,255,255,0.08);
+}
+
+
+.timeline-progress {
+  background:
+    linear-gradient(
+      to bottom,
+      #d174ff,
+      #6c1e9c
+    );
+
+  box-shadow:
+    0 0 20px
+    rgba(190,80,255,0.5);
+}
+
+
+/* =================================
+   ITEMS
+================================= */
+
+.experience-item {
+  position: relative;
+
+  display: flex;
+
+  width: 50%;
+
+  margin-bottom:
+    150px;
+
+  padding-right:
+    80px;
+
+  justify-content:
+    flex-end;
+}
+
+
+.experience-item:nth-child(even) {
+  margin-left:
+    50%;
+
+  padding-right: 0;
+
+  padding-left:
+    80px;
+
+  justify-content:
+    flex-start;
+}
+
+
+.experience-index {
+  position: absolute;
+
+  top: 20px;
+  right: -25px;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(190,100,255,.45);
+
+  border-radius:
+    50%;
+
+  background:
+    #070509;
+
+  color:
+    #c36aff;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  box-shadow:
+    0 0 0 8px
+    rgba(5,5,5,.9);
+
+  z-index: 5;
+}
+
+
+.experience-item:nth-child(even)
+.experience-index {
+  left:
+    -25px;
+
+  right:
+    auto;
+}
+
+
+/* =================================
+   EXPERIENCE CARD
+================================= */
+
+.experience-card {
+  width:
+    min(460px, 100%);
+
+  padding:
+    35px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:
+    20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  backdrop-filter:
+    blur(20px);
+
+  box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.3);
+
+  transition:
+    transform .5s
+    cubic-bezier(.16,1,.3,1),
+    border-color .4s,
+    box-shadow .4s;
+}
+
+
+.experience-card:hover {
+  transform:
+    translateY(-10px);
+
+  border-color:
+    rgba(190,100,255,.35);
+
+  box-shadow:
+    0 35px 100px
+    rgba(120,30,180,.15);
+}
+
+
+.experience-card-top {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  margin-bottom:
+    35px;
+}
+
+
+.experience-card-top span {
+  color:
+    #665f6b;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    8px;
+}
+
+
+.experience-card-top small {
+  color:
+    #988c9e;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    2px;
+}
+
+
+.experience-card h3 {
+  margin:
+    0;
+
+  color:
+    #eee;
+
+  font-size:
+    32px;
+
+  line-height:
+    .9;
+
+  letter-spacing:
+    -2px;
+}
+
+
+.experience-card h4 {
+  margin:
+    12px 0 25px;
+
+  color:
+    #bf67ff;
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    1px;
+}
+
+
+.experience-card p {
+  margin:
+    0;
+
+  color:
+    #7f7884;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.9;
+}
+
+
+.experience-tags {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap: 7px;
+
+  margin-top:
+    28px;
+}
+
+
+.experience-tags span {
+  padding:
+    8px 11px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:
+    20px;
+
+  color:
+    #89818e;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    6px;
+}
+
+
+/* =================================
+   CERTIFICATE SECTION
+================================= */
+
+.certificates-section {
+  max-width:
+    1400px;
+
+  margin:
+    100px auto 0;
+}
+
+
+.certificates-header {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-end;
+
+  margin-bottom:
+    90px;
+}
+
+
+.mini-label {
+  color:
+    #918595;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    3px;
+}
+
+
+.certificates-header h3 {
+  margin:
+    18px 0 0;
+
+  color:
+    #eee;
+
+  font-size:
+    clamp(
+      4rem,
+      8vw,
+      8rem
+    );
+
+  line-height:
+    .75;
+
+  letter-spacing:
+    -7px;
+}
+
+
+.certificates-header h3 span {
+  color:
+    #bd62ff;
+}
+
+
+.certificates-header p {
+  max-width:
+    320px;
+
+  margin:
+    0;
+
+  color:
+    #77717d;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.8;
+}
+
+
+/* =================================
+   CERTIFICATE SHOWCASE
+================================= */
+
+.certificate-showcase {
+  position: relative;
+
+  min-height:
+    650px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  perspective:
+    1800px;
+}
+
+
+.certificate-glow {
+  position: absolute;
+
+  width:
+    600px;
+
+  height:
+    500px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(181,75,255,.17),
+      transparent 70%
+    );
+
+  filter:
+    blur(35px);
+
+  pointer-events:
+    none;
+}
+
+
+/* =================================
+   CERTIFICATE CARD
+================================= */
+
+.certificate-card {
+  position: absolute;
+
+  width:
+    min(470px, 42vw);
+
+  padding:
+    13px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.13);
+
+  border-radius:
+    18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #141017,
+      #080609
+    );
+
+  box-shadow:
+    0 40px 120px
+    rgba(0,0,0,.55);
+
+  transform-style:
+    preserve-3d;
+
+  cursor:
+    pointer;
+
+  transition:
+    border-color .4s;
+}
+
+
+.certificate-card:hover {
+  border-color:
+    rgba(196,100,255,.55);
+}
+
+
+.certificate-1 {
+  transform:
+    translateX(-300px)
+    rotate(-8deg)
+    scale(.88);
+
+  z-index:
+    1;
+}
+
+
+.certificate-2 {
+  transform:
+    translateY(-10px)
+    rotate(0deg)
+    scale(1);
+
+  z-index:
+    3;
+
+  box-shadow:
+    0 50px 150px
+    rgba(130,30,190,.2);
+}
+
+
+.certificate-3 {
+  transform:
+    translateX(300px)
+    rotate(8deg)
+    scale(.88);
+
+  z-index:
+    1;
+}
+
+
+/* =================================
+   CERTIFICATE IMAGE
+================================= */
+
+.certificate-image {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  aspect-ratio:
+    1.414 / 1;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    10px;
+
+  background:
+    #0d0b0f;
+}
+
+
+.certificate-image img {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    block;
+
+  object-fit:
+    contain;
+
+  transition:
+    transform .8s
+    cubic-bezier(.16,1,.3,1);
+
+  will-change:
+    transform;
+}
+
+
+.certificate-card:hover
+.certificate-image img {
+  transform:
+    scale(1.06);
+}
+
+
+.certificate-shine {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.15),
+      transparent 70%
+    );
+
+  transform:
+    translateX(-120%);
+
+  transition:
+    transform .9s ease;
+}
+
+
+.certificate-card:hover
+.certificate-shine {
+  transform:
+    translateX(120%);
+}
+
+
+/* =================================
+   CERTIFICATE OVERLAY
+================================= */
+
+.certificate-hover {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    15px;
+
+  opacity:
+    0;
+
+  background:
+    rgba(10,4,15,.55);
+
+  backdrop-filter:
+    blur(5px);
+
+  transition:
+    opacity .4s;
+}
+
+
+.certificate-card:hover
+.certificate-hover {
+  opacity:
+    1;
+}
+
+
+.certificate-hover span {
+  color:
+    #eee;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    2px;
+}
+
+
+.certificate-hover strong {
+  color:
+    #c76cff;
+
+  font-size:
+    20px;
+}
+
+
+/* =================================
+   CARD TOP / BOTTOM
+================================= */
+
+.certificate-top,
+.certificate-bottom {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  padding:
+    10px 4px;
+}
+
+
+.certificate-top span,
+.certificate-bottom span {
+  color:
+    #716875;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    1px;
+}
+
+
+.certificate-bottom span:first-child {
+  color:
+    #a79eab;
+}
+
+
+/* =================================
+   STATEMENT
+================================= */
+
+.experience-statement {
+  margin:
+    200px auto 0;
+
+  text-align:
+    center;
+}
+
+
+.experience-statement > span {
+  color:
+    #746c78;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    3px;
+}
+
+
+.experience-statement h3 {
+  margin-top:
+    30px;
+
+  color:
+    #eee;
+
+  font-size:
+    clamp(
+      4rem,
+      9vw,
+      9rem
+    );
+
+  line-height:
+    .76;
+
+  letter-spacing:
+    -8px;
+}
+
+
+.experience-statement strong {
+  color:
+    #b85cff;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+  .experience-section {
+    padding:
+      120px 6vw;
+  }
+
+  .experience-heading span:nth-child(3) {
+    margin-left:
+      0;
+  }
+
+  .timeline-track,
+  .timeline-progress {
+    left:
+      20px;
+
+    transform:
+      none;
+  }
+
+  .experience-item,
+  .experience-item:nth-child(even) {
+    width:
+      100%;
+
+    margin-left:
+      0;
+
+    padding:
+      0 0 0 65px;
+
+    justify-content:
+      flex-start;
+  }
+
+  .experience-index,
+  .experience-item:nth-child(even)
+  .experience-index {
+    left:
+      -5px;
+
+    right:
+      auto;
+  }
+
+  .certificate-showcase {
+    min-height:
+      500px;
+  }
+
+  .certificate-card {
+    width:
+      min(430px, 55vw);
+  }
+
+  .certificate-1 {
+    transform:
+      translateX(-190px)
+      rotate(-7deg)
+      scale(.82);
+  }
+
+  .certificate-3 {
+    transform:
+      translateX(190px)
+      rotate(7deg)
+      scale(.82);
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .experience-section {
+    padding:
+      90px 5vw;
+  }
+
+  .experience-heading {
+    font-size:
+      clamp(
+        3.2rem,
+        15vw,
+        5rem
+      );
+
+    letter-spacing:
+      -4px;
+  }
+
+  .experience-intro {
+    font-size:
+      11px;
+  }
+
+  .experience-item,
+  .experience-item:nth-child(even) {
+    padding-left:
+      55px;
+
+    margin-bottom:
+      80px;
+  }
+
+  .experience-card {
+    padding:
+      23px;
+  }
+
+  .experience-card h3 {
+    font-size:
+      25px;
+  }
+
+  .experience-card p {
+    font-size:
+      10px;
+  }
+
+  .certificates-header {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    gap:
+      25px;
+
+    margin-bottom:
+      50px;
+  }
+
+  .certificates-header h3 {
+    font-size:
+      3.8rem;
+
+    letter-spacing:
+      -4px;
+  }
+
+  .certificate-showcase {
+    min-height:
+      auto;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    gap:
+      25px;
+
+    padding:
+      20px 0;
+  }
+
+  .certificate-card,
+  .certificate-1,
+  .certificate-2,
+  .certificate-3 {
+    position:
+      relative;
+
+    width:
+      100%;
+
+    transform:
+      none !important;
+
+    scale:
+      1;
+
+    opacity:
+      1;
+  }
+
+  .certificate-card:hover {
+    transform:
+      translateY(-8px) !important;
+  }
+
+  .certificate-image {
+    aspect-ratio:
+      1.414 / 1;
+  }
+
+  .experience-statement {
+    margin-top:
+      100px;
+  }
+
+  .experience-statement h3 {
+    font-size:
+      clamp(
+        3.2rem,
+        15vw,
+        5rem
+      );
+
+    letter-spacing:
+      -4px;
+  }
+}
