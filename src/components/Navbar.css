@@ -1,3 +1,6 @@
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
   position: fixed;
@@ -13,11 +16,20 @@
   align-items: center;
   justify-content: space-between;
 
-  z-index: 100;
+  box-sizing: border-box;
 
-  background: rgba(7, 7, 7, 0.35);
-  backdrop-filter: blur(12px);
+  z-index: 1000;
+
+  background: rgba(7, 7, 7, 0.45);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
+
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
   color: white;
@@ -25,32 +37,55 @@
 
   font-size: 28px;
   font-weight: 800;
+
   letter-spacing: -2px;
+
+  white-space: nowrap;
+
+  transition: 0.3s ease;
 }
 
 .logo span {
   color: #a855f7;
 }
 
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   DESKTOP NAV
+========================= */
+
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 35px;
 }
 
 .nav-links a,
 .talk-button {
   color: #aaa;
+
   text-decoration: none;
 
   font-size: 11px;
   letter-spacing: 2px;
 
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: white;
 }
+
+
+/* =========================
+   LET'S TALK
+========================= */
 
 .talk-button {
   color: white;
@@ -61,16 +96,251 @@
 }
 
 .talk-button:hover {
-  border-color: #a855f7;
   color: #a855f7;
+
+  border-color: #a855f7;
 }
 
-@media (max-width: 700px) {
+
+/* =========================
+   MOBILE BUTTON
+========================= */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  cursor: pointer;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  width: 19px;
+  height: 1.5px;
+
+  background: white;
+
+  transition: all 0.3s ease;
+}
+
+
+/* =========================
+   HAMBURGER ANIMATION
+========================= */
+
+.menu-open .menu-toggle span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 4vw;
+  }
+
   .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links a,
+  .talk-button {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    height: 70px;
+
+    padding: 0 6vw;
+
+    background: rgba(7, 7, 7, 0.65);
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  /* Hide desktop navigation */
+  .nav-links,
+  .talk-button {
     display: none;
   }
 
+  /* Show hamburger */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Mobile full menu */
+  .mobile-menu {
+    position: fixed;
+
+    top: 70px;
+    left: 0;
+
+    width: 100%;
+
+    min-height: calc(100vh - 70px);
+
+    padding: 45px 8vw;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 28px;
+
+    background: rgba(7, 7, 7, 0.97);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    transform: translateY(-20px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+  /* Open menu */
+  .mobile-menu.active {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+  }
+
+  /* Mobile links */
+  .mobile-menu a {
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu a:hover {
+    color: white;
+
+    transform: translateX(8px);
+  }
+
+  /* Mobile Let's Talk */
+  .mobile-menu .mobile-talk {
+    margin-top: 15px;
+
+    padding: 13px 20px;
+
+    color: white;
+
+    border: 1px solid #555;
+
+    border-radius: 4px;
+  }
+
+  .mobile-menu .mobile-talk:hover {
+    color: #a855f7;
+
+    border-color: #a855f7;
+
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
   .navbar {
-    padding: 0 6vw;
+    padding: 0 5vw;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobile-menu {
+    padding: 40px 7vw;
+  }
+
+  .mobile-menu a {
+    font-size: 12px;
+
+    letter-spacing: 2.5px;
   }
 }

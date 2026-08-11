@@ -1,5 +1,6 @@
 .about-section {
   position: relative;
+
   min-height: 100vh;
 
   padding:
@@ -12,7 +13,7 @@
   background:
     radial-gradient(
       circle at 70% 40%,
-      rgba(140, 45, 255, 0.10),
+      rgba(140, 45, 255, 0.1),
       transparent 35%
     ),
     #050505;
@@ -62,21 +63,20 @@
 
   z-index: -3;
 
-  opacity: .08;
+  opacity: 0.08;
 
   background-image:
     linear-gradient(
-      rgba(180, 90, 255, .25) 1px,
+      rgba(180, 90, 255, 0.25) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(180, 90, 255, .25) 1px,
+      rgba(180, 90, 255, 0.25) 1px,
       transparent 1px
     );
 
-  background-size:
-    70px 70px;
+  background-size: 70px 70px;
 
   mask-image:
     linear-gradient(
@@ -101,7 +101,6 @@
   margin: 0 auto 100px;
 }
 
-
 .about-eyebrow {
   display: flex;
 
@@ -120,11 +119,9 @@
   letter-spacing: 2px;
 }
 
-
 .about-eyebrow span {
   color: #bd65ff;
 }
-
 
 .about-heading {
   margin: 25px 0 0;
@@ -146,27 +143,24 @@
       10rem
     );
 
-  line-height: .78;
+  line-height: 0.78;
 
   letter-spacing: -7px;
 
   font-weight: 800;
 }
 
-
 .about-word {
   display: block;
 }
-
 
 .about-word.purple {
   color: #b65cff;
 
   text-shadow:
     0 0 50px
-    rgba(168, 85, 247, .25);
+    rgba(168, 85, 247, 0.25);
 }
-
 
 .about-copy {
   max-width: 530px;
@@ -217,7 +211,7 @@
   z-index: -1;
 
   color:
-    rgba(255, 255, 255, .025);
+    rgba(255, 255, 255, 0.025);
 
   font-size:
     clamp(
@@ -247,15 +241,15 @@
 
   border:
     1px solid
-    rgba(185, 95, 255, .18);
+    rgba(185, 95, 255, 0.18);
 
   border-radius: 30px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(150, 50, 255, .09),
-      rgba(255,255,255,.015)
+      rgba(150, 50, 255, 0.09),
+      rgba(255, 255, 255, 0.015)
     );
 
   overflow: hidden;
@@ -266,15 +260,14 @@
 
   box-shadow:
     inset 0 0 100px
-    rgba(170, 70, 255, .04),
-
+    rgba(170, 70, 255, 0.04),
     0 30px 100px
-    rgba(0,0,0,.35);
+    rgba(0, 0, 0, 0.35);
 }
 
 
 /* =========================================
-   ORBIT
+   ORBIT SYSTEM
 ========================================= */
 
 .orbit-system {
@@ -286,12 +279,23 @@
   left: 50%;
   top: 45%;
 
-  transform:
-    translate(-50%, -50%);
+  /*
+    IMPORTANT:
+    Do NOT use translate() here.
+    GSAP controls xPercent/yPercent.
+  */
 
   transform-style: preserve-3d;
+
+  will-change: transform;
+
+  z-index: 2;
 }
 
+
+/* =========================================
+   ORBIT RINGS
+========================================= */
 
 .orbit-ring {
   position: absolute;
@@ -302,11 +306,12 @@
 
   border:
     1px solid
-    rgba(185, 95, 255, .22);
+    rgba(185, 95, 255, 0.22);
 
   transform-style: preserve-3d;
-}
 
+  will-change: transform;
+}
 
 .orbit-ring.one {
   transform:
@@ -314,13 +319,11 @@
     rotateZ(20deg);
 }
 
-
 .orbit-ring.two {
   transform:
     rotateY(65deg)
     rotateZ(40deg);
 }
-
 
 .orbit-ring.three {
   inset: 55px;
@@ -355,20 +358,20 @@
 
   border:
     1px solid
-    rgba(205, 130, 255, .6);
+    rgba(205, 130, 255, 0.6);
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(180, 80, 255, .3),
-      rgba(20, 5, 30, .9)
+      rgba(180, 80, 255, 0.3),
+      rgba(20, 5, 30, 0.9)
     );
 
   box-shadow:
     0 0 70px
-    rgba(170, 70, 255, .25);
+    rgba(170, 70, 255, 0.25);
 
   color: white;
 
@@ -377,8 +380,9 @@
   font-weight: 800;
 
   letter-spacing: -2px;
-}
 
+  will-change: transform;
+}
 
 .orbit-core::after {
   content: "";
@@ -389,7 +393,7 @@
 
   border:
     1px solid
-    rgba(190, 100, 255, .15);
+    rgba(190, 100, 255, 0.15);
 
   border-radius: 50%;
 }
@@ -402,16 +406,18 @@
 .orbit-dot {
   position: absolute;
 
-  padding: 8px 12px;
+  padding:
+    8px
+    12px;
 
   border:
     1px solid
-    rgba(190, 100, 255, .3);
+    rgba(190, 100, 255, 0.3);
 
   border-radius: 20px;
 
   background:
-    rgba(10,5,15,.8);
+    rgba(10, 5, 15, 0.8);
 
   color: #d7c0e8;
 
@@ -424,8 +430,9 @@
   white-space: nowrap;
 
   backdrop-filter: blur(10px);
-}
 
+  will-change: transform;
+}
 
 .dot-1 {
   top: 0;
@@ -435,7 +442,6 @@
     translateX(-50%);
 }
 
-
 .dot-2 {
   right: -20px;
   top: 50%;
@@ -444,7 +450,6 @@
     translateY(-50%);
 }
 
-
 .dot-3 {
   bottom: 10px;
   left: 50%;
@@ -452,7 +457,6 @@
   transform:
     translateX(-50%);
 }
-
 
 .dot-4 {
   left: -25px;
@@ -476,8 +480,9 @@
   display: flex;
 
   flex-direction: column;
-}
 
+  z-index: 5;
+}
 
 .visual-caption span {
   color: #706a76;
@@ -490,7 +495,6 @@
 
   letter-spacing: 3px;
 }
-
 
 .visual-caption strong {
   color: #eee;
@@ -524,12 +528,12 @@
 
   border:
     1px solid
-    rgba(190, 100, 255, .35);
+    rgba(190, 100, 255, 0.35);
 
   border-radius: 10px;
 
   background:
-    rgba(10,5,15,.75);
+    rgba(10, 5, 15, 0.75);
 
   backdrop-filter: blur(15px);
 
@@ -543,9 +547,10 @@
 
   box-shadow:
     0 20px 50px
-    rgba(0,0,0,.35);
-}
+    rgba(0, 0, 0, 0.35);
 
+  white-space: nowrap;
+}
 
 .float-card span {
   color: #c36cff;
@@ -553,18 +558,15 @@
   font-size: 17px;
 }
 
-
 .float-a {
   left: 8%;
   top: 18%;
 }
 
-
 .float-b {
   right: 6%;
   top: 34%;
 }
-
 
 .float-c {
   right: 12%;
@@ -580,7 +582,6 @@
   padding-left: 20px;
 }
 
-
 .detail-label {
   color: #9b91a4;
 
@@ -592,7 +593,6 @@
 
   letter-spacing: 2px;
 }
-
 
 .about-details h3 {
   margin: 18px 0;
@@ -606,18 +606,16 @@
       5rem
     );
 
-  line-height: .9;
+  line-height: 0.9;
 
   letter-spacing: -4px;
 }
-
 
 .about-details h3 span {
   color: #bd61ff;
 
   padding: 0 7px;
 }
-
 
 .about-details p {
   max-width: 470px;
@@ -629,7 +627,6 @@
   line-height: 1.9;
 }
 
-
 .about-details p b {
   color: #d3b4ef;
 
@@ -638,7 +635,7 @@
 
 
 /* =========================================
-   SKILL CLOUD
+   SKILLS
 ========================================= */
 
 .skill-cloud {
@@ -653,7 +650,6 @@
   max-width: 480px;
 }
 
-
 .skill-chip {
   padding:
     9px
@@ -661,12 +657,12 @@
 
   border:
     1px solid
-    rgba(255,255,255,.09);
+    rgba(255, 255, 255, 0.09);
 
   border-radius: 30px;
 
   background:
-    rgba(255,255,255,.025);
+    rgba(255, 255, 255, 0.025);
 
   color: #aaa;
 
@@ -676,19 +672,17 @@
 
   font-size: 7px;
 
-  transition:
-    .3s ease;
+  transition: 0.3s ease;
 }
-
 
 .skill-chip:hover {
   color: white;
 
   border-color:
-    rgba(190,100,255,.5);
+    rgba(190, 100, 255, 0.5);
 
   background:
-    rgba(170,70,255,.1);
+    rgba(170, 70, 255, 0.1);
 
   transform:
     translateY(-4px);
@@ -710,13 +704,12 @@
   display: grid;
 
   grid-template-columns:
-    repeat(4,1fr);
+    repeat(4, 1fr);
 
   gap: 10px;
 
   perspective: 1000px;
 }
-
 
 .experience-card {
   position: relative;
@@ -729,29 +722,27 @@
 
   border:
     1px solid
-    rgba(255,255,255,.08);
+    rgba(255, 255, 255, 0.08);
 
   border-radius: 16px;
 
   background:
-    rgba(255,255,255,.025);
+    rgba(255, 255, 255, 0.025);
 
   transform-style: preserve-3d;
 
   transition:
-    border-color .3s ease,
-    background .3s ease;
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
-
 
 .experience-card:hover {
   border-color:
-    rgba(180,90,255,.45);
+    rgba(180, 90, 255, 0.45);
 
   background:
-    rgba(170,70,255,.06);
+    rgba(170, 70, 255, 0.06);
 }
-
 
 .card-index {
   color: #625b67;
@@ -762,7 +753,6 @@
 
   font-size: 7px;
 }
-
 
 .experience-card strong {
   display: block;
@@ -777,7 +767,6 @@
 
   letter-spacing: -4px;
 }
-
 
 .experience-card small {
   display: block;
@@ -795,7 +784,6 @@
   letter-spacing: 1px;
 }
 
-
 .experience-card p {
   max-width: 180px;
 
@@ -808,13 +796,12 @@
   line-height: 1.7;
 }
 
-
 .accent-card {
   background:
     linear-gradient(
       145deg,
-      rgba(160,60,255,.14),
-      rgba(255,255,255,.02)
+      rgba(160, 60, 255, 0.14),
+      rgba(255, 255, 255, 0.02)
     );
 }
 
@@ -831,7 +818,7 @@
   white-space: nowrap;
 
   color:
-    rgba(190,100,255,.055);
+    rgba(190, 100, 255, 0.055);
 
   font-size:
     clamp(
@@ -847,15 +834,12 @@
   pointer-events: none;
 }
 
-
 .about-marquee div {
   animation:
     marquee 22s linear infinite;
 }
 
-
 @keyframes marquee {
-
   from {
     transform:
       translateX(0);
@@ -865,7 +849,6 @@
     transform:
       translateX(-50%);
   }
-
 }
 
 
@@ -873,40 +856,78 @@
    TABLET
 ========================================= */
 
-@media (max-width: 1000px) {
-
+@media (max-width: 1100px) {
   .about-section {
     padding:
-      110px
-      6vw
-      90px;
+      120px
+      5vw
+      100px;
   }
 
+  .about-main {
+    grid-template-columns:
+      1fr 1fr;
 
+    gap: 5vw;
+  }
+
+  .about-visual {
+    min-height: 500px;
+  }
+
+  .orbit-system {
+    width: 330px;
+    height: 330px;
+  }
+
+  .orbit-core {
+    width: 105px;
+    height: 105px;
+
+    font-size: 30px;
+  }
+
+  .experience-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+========================================= */
+
+@media (max-width: 900px) {
   .about-main {
     grid-template-columns: 1fr;
 
     gap: 70px;
   }
 
-
   .about-details {
     padding-left: 0;
+
+    max-width: 650px;
   }
 
-
   .about-visual {
+    width: 100%;
+
     max-width: 700px;
 
     margin: auto;
+
+    min-height: 520px;
   }
 
+  .about-number {
+    left: -2vw;
+  }
 
   .experience-grid {
-    grid-template-columns:
-      repeat(2,1fr);
+    margin-top: 90px;
   }
-
 }
 
 
@@ -915,7 +936,6 @@
 ========================================= */
 
 @media (max-width: 600px) {
-
   .about-section {
     padding:
       90px
@@ -924,49 +944,105 @@
   }
 
 
+  /* HEADER */
+
   .about-header {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
   }
 
+  .about-eyebrow {
+    gap: 9px;
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
 
   .about-heading {
-    gap: 10px;
+    gap: 8px;
+
+    margin-top: 20px;
 
     font-size:
       clamp(
-        3.2rem,
-        16vw,
+        3.1rem,
+        15.5vw,
         5rem
       );
+
+    line-height: 0.82;
 
     letter-spacing: -4px;
   }
 
-
   .about-copy {
-    font-size: 12px;
+    max-width: 100%;
+
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    line-height: 1.8;
   }
 
 
-  .about-number {
-    top: -40px;
+  /* GIANT NUMBER */
 
-    font-size: 15rem;
+  .about-number {
+    left: -5vw;
+
+    top: -45px;
+
+    font-size: 14rem;
 
     letter-spacing: -15px;
   }
 
 
+  /* MAIN */
+
+  .about-main {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+
+  /* VISUAL */
+
   .about-visual {
-    min-height: 390px;
+    width: 100%;
+
+    min-height: 420px;
 
     border-radius: 20px;
   }
 
 
+  /*
+     IMPORTANT:
+     Orbit stays visible on mobile.
+  */
+
   .orbit-system {
     width: 270px;
     height: 270px;
+
+    left: 50%;
+    top: 43%;
+
+    transform-style: preserve-3d;
+  }
+
+
+  .orbit-ring {
+    border-color:
+      rgba(185, 95, 255, 0.28);
+  }
+
+
+  .orbit-ring.three {
+    inset: 38px;
   }
 
 
@@ -975,27 +1051,66 @@
     height: 90px;
 
     font-size: 25px;
+
+    box-shadow:
+      0 0 45px
+      rgba(170, 70, 255, 0.3);
   }
 
+
+  .orbit-core::after {
+    inset: -10px;
+  }
+
+
+  /* DOTS */
+
+  .orbit-dot {
+    padding:
+      6px
+      9px;
+
+    font-size: 6px;
+
+    backdrop-filter: blur(8px);
+  }
+
+  .dot-2 {
+    right: -14px;
+  }
+
+  .dot-4 {
+    left: -18px;
+  }
+
+
+  /* FLOATING CARDS */
 
   .float-card {
     padding:
       8px
-      11px;
+      10px;
 
-    font-size: 6px;
+    gap: 6px;
+
+    font-size: 5.5px;
+
+    border-radius: 8px;
   }
 
+  .float-card span {
+    font-size: 13px;
+  }
 
   .float-a {
     left: 4%;
+    top: 12%;
   }
-
 
   .float-b {
     right: 3%;
+    top: 29%;
   }
-
 
   .float-c {
     right: 5%;
@@ -1003,50 +1118,271 @@
   }
 
 
+  /* CAPTION */
+
   .visual-caption {
-    left: 20px;
-    bottom: 20px;
+    left: 18px;
+    bottom: 18px;
   }
 
+  .visual-caption span {
+    font-size: 6px;
+
+    letter-spacing: 2px;
+  }
 
   .visual-caption strong {
-    font-size: 25px;
+    font-size: 24px;
+
+    letter-spacing: -1px;
   }
 
 
+  /* DETAILS */
+
+  .about-details {
+    width: 100%;
+
+    padding-left: 0;
+  }
+
+  .detail-label {
+    font-size: 7px;
+  }
+
   .about-details h3 {
-    font-size: 3rem;
+    margin:
+      15px
+      0
+      20px;
+
+    font-size:
+      clamp(
+        2.7rem,
+        12vw,
+        4rem
+      );
+
+    letter-spacing: -3px;
+  }
+
+  .about-details h3 span {
+    padding:
+      0
+      5px;
+  }
+
+  .about-details p {
+    max-width: 100%;
+
+    font-size: 10.5px;
+
+    line-height: 1.8;
+  }
+
+
+  /* SKILLS */
+
+  .skill-cloud {
+    gap: 6px;
+
+    margin-top: 25px;
+  }
+
+  .skill-chip {
+    padding:
+      8px
+      10px;
+
+    font-size: 6px;
+  }
+
+
+  /* EXPERIENCE */
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-top: 75px;
+  }
+
+  .experience-card {
+    min-height: 190px;
+
+    padding: 20px;
+  }
+
+  .experience-card strong {
+    margin-top: 28px;
+
+    font-size: 44px;
+  }
+
+  .experience-card p {
+    max-width: 240px;
+
+    font-size: 9px;
+  }
+
+
+  /* MARQUEE */
+
+  .about-marquee {
+    margin-top: 75px;
+
+    font-size: 3.5rem;
 
     letter-spacing: -3px;
   }
 
 
-  .about-details p {
-    font-size: 11px;
-  }
-
-
-  .experience-grid {
-    grid-template-columns: 1fr;
-
-    margin-top: 80px;
-  }
-
-
-  .experience-card {
-    min-height: 190px;
-  }
-
-
-  .about-marquee {
-    margin-top: 80px;
-
-    font-size: 4rem;
-  }
-
+  /* NO CURSOR ON TOUCH */
 
   .cursor-glow {
     display: none;
   }
+}
 
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .about-section {
+    padding:
+      80px
+      4.5vw
+      60px;
+  }
+
+  .about-heading {
+    font-size: 3rem;
+
+    letter-spacing: -3px;
+  }
+
+  .about-copy {
+    font-size: 10px;
+  }
+
+  .about-visual {
+    min-height: 380px;
+  }
+
+  .orbit-system {
+    width: 235px;
+    height: 235px;
+
+    top: 42%;
+  }
+
+  .orbit-core {
+    width: 78px;
+    height: 78px;
+
+    font-size: 22px;
+  }
+
+  .orbit-ring.three {
+    inset: 32px;
+  }
+
+  .orbit-dot {
+    padding:
+      5px
+      7px;
+
+    font-size: 5px;
+  }
+
+  .dot-2 {
+    right: -12px;
+  }
+
+  .dot-4 {
+    left: -14px;
+  }
+
+  .float-card {
+    padding:
+      7px
+      8px;
+
+    font-size: 5px;
+  }
+
+  .float-card span {
+    font-size: 11px;
+  }
+
+  .float-a {
+    left: 3%;
+  }
+
+  .float-b {
+    right: 2%;
+  }
+
+  .float-c {
+    right: 3%;
+  }
+
+  .visual-caption strong {
+    font-size: 21px;
+  }
+
+  .about-details h3 {
+    font-size: 2.6rem;
+  }
+
+  .experience-card {
+    min-height: 180px;
+  }
+
+  .about-marquee {
+    font-size: 3rem;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 350px) {
+  .about-heading {
+    font-size: 2.7rem;
+  }
+
+  .about-visual {
+    min-height: 350px;
+  }
+
+  .orbit-system {
+    width: 210px;
+    height: 210px;
+  }
+
+  .orbit-core {
+    width: 70px;
+    height: 70px;
+
+    font-size: 19px;
+  }
+
+  .orbit-ring.three {
+    inset: 28px;
+  }
+
+  .float-card {
+    display: none;
+  }
+
+  .visual-caption {
+    left: 14px;
+    bottom: 14px;
+  }
 }

@@ -9,15 +9,18 @@ function About() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
+
     const ctx = gsap.context(() => {
-      /* ================================
+      /* =========================================
          MAIN REVEAL
-      ================================= */
+      ========================================= */
 
       const introTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".about-section",
           start: "top 75%",
+          once: true,
         },
       });
 
@@ -51,9 +54,9 @@ function About() {
           "-=0.5"
         );
 
-      /* ================================
+      /* =========================================
          GIANT NUMBER
-      ================================= */
+      ========================================= */
 
       gsap.from(".about-number", {
         scrollTrigger: {
@@ -66,22 +69,37 @@ function About() {
         scale: 0.5,
       });
 
-      /* ================================
-         ORBIT
-      ================================= */
+      /* =========================================
+         ORBIT SYSTEM
+         IMPORTANT FIX:
+         xPercent/yPercent keep it centered
+         while GSAP controls rotation.
+      ========================================= */
+
+      gsap.set(".orbit-system", {
+        xPercent: -50,
+        yPercent: -50,
+        rotation: 0,
+      });
 
       gsap.to(".orbit-system", {
         rotation: 360,
         duration: 30,
         repeat: -1,
         ease: "none",
+        transformOrigin: "50% 50%",
       });
+
+      /* =========================================
+         ORBIT RINGS
+      ========================================= */
 
       gsap.to(".orbit-ring.one", {
         rotation: -360,
         duration: 18,
         repeat: -1,
         ease: "none",
+        transformOrigin: "50% 50%",
       });
 
       gsap.to(".orbit-ring.two", {
@@ -89,11 +107,46 @@ function About() {
         duration: 25,
         repeat: -1,
         ease: "none",
+        transformOrigin: "50% 50%",
       });
 
-      /* ================================
+      gsap.to(".orbit-ring.three", {
+        rotation: -360,
+        duration: 14,
+        repeat: -1,
+        ease: "none",
+        transformOrigin: "50% 50%",
+      });
+
+      /* =========================================
+         ORBIT CORE PULSE
+      ========================================= */
+
+      gsap.to(".orbit-core", {
+        scale: 1.06,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      /* =========================================
+         ORBIT DOT PULSE
+      ========================================= */
+
+      gsap.to(".orbit-dot", {
+        opacity: 0.65,
+        scale: 0.94,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.2,
+        ease: "sine.inOut",
+      });
+
+      /* =========================================
          SCROLL ROTATION
-      ================================= */
+      ========================================= */
 
       gsap.to(".about-visual", {
         scrollTrigger: {
@@ -107,14 +160,15 @@ function About() {
         y: -30,
       });
 
-      /* ================================
+      /* =========================================
          SKILL CHIPS
-      ================================= */
+      ========================================= */
 
       gsap.from(".skill-chip", {
         scrollTrigger: {
           trigger: ".skill-cloud",
           start: "top 80%",
+          once: true,
         },
         scale: 0,
         opacity: 0,
@@ -124,14 +178,15 @@ function About() {
         ease: "back.out(1.7)",
       });
 
-      /* ================================
-         CARDS
-      ================================= */
+      /* =========================================
+         EXPERIENCE CARDS
+      ========================================= */
 
       gsap.from(".experience-card", {
         scrollTrigger: {
           trigger: ".experience-grid",
           start: "top 80%",
+          once: true,
         },
         y: 70,
         opacity: 0,
@@ -141,18 +196,18 @@ function About() {
         ease: "power4.out",
       });
 
-      /* ================================
+      /* =========================================
          COUNTERS
-      ================================= */
+      ========================================= */
 
-      document
+      section
         .querySelectorAll(".counter")
         .forEach((counter) => {
-          const target = Number(
-            counter.dataset.target
-          );
+          const target = Number(counter.dataset.target);
 
-          const obj = { value: 0 };
+          const obj = {
+            value: 0,
+          };
 
           gsap.to(obj, {
             value: target,
@@ -162,18 +217,18 @@ function About() {
             scrollTrigger: {
               trigger: counter,
               start: "top 85%",
+              once: true,
             },
 
             onUpdate: () => {
-              counter.textContent =
-                Math.floor(obj.value);
+              counter.textContent = Math.floor(obj.value);
             },
           });
         });
 
-      /* ================================
-         FLOATING
-      ================================= */
+      /* =========================================
+         FLOATING CARDS
+      ========================================= */
 
       gsap.to(".float-a", {
         y: -15,
@@ -199,20 +254,21 @@ function About() {
         ease: "sine.inOut",
       });
 
-      /* ================================
-         MOUSE PARALLAX
-      ================================= */
+      /* =========================================
+         DESKTOP MOUSE PARALLAX
+         Mobile doesn't need mouse effects.
+      ========================================= */
+
+      const desktopPointer = window.matchMedia(
+        "(pointer: fine)"
+      ).matches;
 
       const move = (e) => {
         const x =
-          e.clientX /
-            window.innerWidth -
-          0.5;
+          e.clientX / window.innerWidth - 0.5;
 
         const y =
-          e.clientY /
-            window.innerHeight -
-          0.5;
+          e.clientY / window.innerHeight - 0.5;
 
         gsap.to(".about-visual", {
           x: x * 18,
@@ -247,64 +303,105 @@ function About() {
         });
       };
 
-      window.addEventListener(
-        "mousemove",
-        move
-      );
+      if (desktopPointer) {
+        window.addEventListener("mousemove", move);
+      }
 
-      /* ================================
+      /* =========================================
          MAGNETIC CARDS
-      ================================= */
+         DESKTOP ONLY
+      ========================================= */
 
-      document
-        .querySelectorAll(".experience-card")
-        .forEach((card) => {
+      const cards =
+        section.querySelectorAll(".experience-card");
+
+      const cardHandlers = [];
+
+      if (desktopPointer) {
+        cards.forEach((card) => {
+          const handleMove = (e) => {
+            const rect =
+              card.getBoundingClientRect();
+
+            const x =
+              e.clientX -
+              rect.left -
+              rect.width / 2;
+
+            const y =
+              e.clientY -
+              rect.top -
+              rect.height / 2;
+
+            gsap.to(card, {
+              rotateY: x * 0.04,
+              rotateX: y * -0.04,
+              duration: 0.4,
+            });
+          };
+
+          const handleLeave = () => {
+            gsap.to(card, {
+              rotateY: 0,
+              rotateX: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            });
+          };
+
           card.addEventListener(
             "mousemove",
-            (e) => {
-              const rect =
-                card.getBoundingClientRect();
-
-              const x =
-                e.clientX -
-                rect.left -
-                rect.width / 2;
-
-              const y =
-                e.clientY -
-                rect.top -
-                rect.height / 2;
-
-              gsap.to(card, {
-                rotateY: x * 0.04,
-                rotateX: y * -0.04,
-                duration: 0.4,
-              });
-            }
+            handleMove
           );
 
           card.addEventListener(
             "mouseleave",
-            () => {
-              gsap.to(card, {
-                rotateY: 0,
-                rotateX: 0,
-                duration: 0.6,
-                ease: "power3.out",
-              });
-            }
+            handleLeave
           );
+
+          cardHandlers.push({
+            card,
+            handleMove,
+            handleLeave,
+          });
         });
+      }
+
+      /* =========================================
+         SCROLL MOUSE
+      ========================================= */
 
       return () => {
-        window.removeEventListener(
-          "mousemove",
-          move
+        if (desktopPointer) {
+          window.removeEventListener(
+            "mousemove",
+            move
+          );
+        }
+
+        cardHandlers.forEach(
+          ({
+            card,
+            handleMove,
+            handleLeave,
+          }) => {
+            card.removeEventListener(
+              "mousemove",
+              handleMove
+            );
+
+            card.removeEventListener(
+              "mouseleave",
+              handleLeave
+            );
+          }
         );
       };
-    }, sectionRef);
+    }, section);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -313,13 +410,21 @@ function About() {
       className="about-section"
       id="about"
     >
+      {/* =====================================
+          CURSOR GLOW
+      ===================================== */}
+
       <div className="cursor-glow"></div>
+
+      {/* =====================================
+          BACKGROUND GRID
+      ===================================== */}
 
       <div className="about-grid"></div>
 
-      {/* ================================
+      {/* =====================================
           HEADER
-      ================================= */}
+      ===================================== */}
 
       <div className="about-header">
         <div className="about-eyebrow">
@@ -350,20 +455,23 @@ function About() {
         </p>
       </div>
 
-      {/* ================================
-          MAIN VISUAL
-      ================================= */}
+      {/* =====================================
+          MAIN
+      ===================================== */}
 
       <div className="about-main">
+        {/* GIANT NUMBER */}
 
         <div className="about-number">
           01
         </div>
 
+        {/* =====================================
+            VISUAL
+        ===================================== */}
+
         <div className="about-visual">
-
           <div className="orbit-system">
-
             <div className="orbit-ring one"></div>
 
             <div className="orbit-ring two"></div>
@@ -389,15 +497,19 @@ function About() {
             <div className="orbit-dot dot-4">
               UI
             </div>
-
           </div>
+
+          {/* CAPTION */}
 
           <div className="visual-caption">
             <span>CREATIVE</span>
+
             <strong>
               DEVELOPER
             </strong>
           </div>
+
+          {/* FLOATING CARDS */}
 
           <div className="float-card float-a">
             <span>⚛</span>
@@ -413,15 +525,13 @@ function About() {
             <span>✦</span>
             DESIGN
           </div>
-
         </div>
 
-        {/* ================================
-            COPY
-        ================================= */}
+        {/* =====================================
+            DETAILS
+        ===================================== */}
 
         <div className="about-details">
-
           <div className="detail-label">
             WHO I AM
           </div>
@@ -450,7 +560,6 @@ function About() {
           </p>
 
           <div className="skill-cloud">
-
             <div className="skill-chip">
               HTML
             </div>
@@ -490,20 +599,16 @@ function About() {
             <div className="skill-chip">
               Graphic Design
             </div>
-
           </div>
-
         </div>
       </div>
 
-      {/* ================================
-          EXPERIENCE NUMBERS
-      ================================= */}
+      {/* =====================================
+          EXPERIENCE
+      ===================================== */}
 
       <div className="experience-grid">
-
         <div className="experience-card">
-
           <span className="card-index">
             01
           </span>
@@ -527,11 +632,9 @@ function About() {
             systems & digital
             experiences.
           </p>
-
         </div>
 
         <div className="experience-card">
-
           <span className="card-index">
             02
           </span>
@@ -555,11 +658,9 @@ function About() {
             development and
             creative growth.
           </p>
-
         </div>
 
         <div className="experience-card">
-
           <span className="card-index">
             03
           </span>
@@ -583,18 +684,14 @@ function About() {
             design and freelance
             work.
           </p>
-
         </div>
 
         <div className="experience-card accent-card">
-
           <span className="card-index">
             04
           </span>
 
-          <strong>
-            ∞
-          </strong>
+          <strong>∞</strong>
 
           <small>
             CURIOSITY
@@ -605,14 +702,12 @@ function About() {
             Always building.
             Always experimenting.
           </p>
-
         </div>
-
       </div>
 
-      {/* ================================
+      {/* =====================================
           MARQUEE
-      ================================= */}
+      ===================================== */}
 
       <div className="about-marquee">
         <div>
@@ -621,7 +716,6 @@ function About() {
           CREATE • EXPERIENCE •
         </div>
       </div>
-
     </section>
   );
 }

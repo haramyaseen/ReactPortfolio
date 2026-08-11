@@ -1618,3 +1618,673 @@
   }
 
 }
+/* =========================================================
+   FINAL RESPONSIVE HERO FIX
+========================================================= */
+
+
+/* ---------- LARGE TABLET ---------- */
+
+@media (max-width: 1100px) {
+
+  .hero {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .hero-content {
+    width: 58%;
+    max-width: 600px;
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 8vw, 7rem);
+  }
+
+  .avatar-container {
+    width: 50vw;
+    height: 75vh;
+    right: -5vw;
+    bottom: 0;
+  }
+
+  .tech-label {
+    font-size: 8px;
+    padding: 8px 11px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   769px - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      105px
+      5vw
+      70px;
+
+    align-items: center;
+  }
+
+  .hero-content {
+    width: 65%;
+    max-width: 560px;
+  }
+
+  .hero-title {
+    font-size: clamp(
+      3.8rem,
+      9vw,
+      6.5rem
+    );
+
+    letter-spacing: -4px;
+  }
+
+  .hero-description {
+    max-width: 400px;
+  }
+
+  .hero-buttons {
+    flex-wrap: wrap;
+  }
+
+  .avatar-container {
+    width: 55vw;
+    height: 70vh;
+
+    right: -12vw;
+    bottom: -1vh;
+
+    opacity: 0.75;
+  }
+
+  .tech-label {
+    transform: scale(0.75);
+  }
+
+  .hero-social {
+    left: 2vw;
+    bottom: 18%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE TABLET
+   601px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      100px
+      6vw
+      60px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 580px;
+
+    z-index: 30;
+  }
+
+
+  /* Kicker */
+
+  .hero-kicker {
+    max-width: 100%;
+
+    padding: 8px 13px;
+
+    margin-bottom: 20px;
+
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+
+  /* Intro */
+
+  .hero-intro {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+
+  /* Name */
+
+  .hero-title {
+    font-size: clamp(
+      3.8rem,
+      14vw,
+      6rem
+    );
+
+    line-height: 0.85;
+
+    letter-spacing: -4px;
+  }
+
+
+  /* Roles */
+
+  .hero-role {
+    max-width: 430px;
+
+    margin-top: 18px;
+
+    font-size: 7px;
+
+    line-height: 1.8;
+  }
+
+
+  /* Description */
+
+  .hero-description {
+    max-width: 390px;
+
+    margin-top: 17px;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+  }
+
+
+  /* Buttons */
+
+  .hero-buttons {
+    margin-top: 22px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+  }
+
+  .hero-btn {
+    min-height: 44px;
+
+    padding: 10px 15px;
+
+    font-size: 8px;
+  }
+
+
+  /* Stats */
+
+  .hero-stats {
+    margin-top: 22px;
+
+    max-width: 310px;
+
+    width: 100%;
+  }
+
+  .stat {
+    min-width: 0;
+
+    flex: 1;
+
+    padding: 10px 8px;
+
+    text-align: center;
+  }
+
+  .stat strong {
+    font-size: 17px;
+  }
+
+  .stat span {
+    font-size: 5.5px;
+  }
+
+
+  /* Avatar becomes background */
+
+  .avatar-container {
+    width: 80vw;
+
+    height: 60vh;
+
+    right: -18vw;
+
+    bottom: -3vh;
+
+    z-index: 5;
+
+    opacity: 0.48;
+  }
+
+  .hero-avatar {
+    width: 100%;
+
+    max-height: 62vh;
+  }
+
+
+  /* Hide floating tech cards */
+
+  .tech-label {
+    display: none;
+  }
+
+
+  /* Hide desktop social */
+
+  .hero-social {
+    display: none;
+  }
+
+
+  /* Hide scroll */
+
+  .hero-scroll {
+    display: none;
+  }
+
+
+  /* Text readability */
+
+  .hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 5, 5, 0) 0%,
+        rgba(5, 5, 5, 0.12) 30%,
+        rgba(5, 5, 5, 0.9) 100%
+      );
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   481px - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      92px
+      6vw
+      45px;
+
+    overflow: hidden;
+  }
+
+
+  .hero-content {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+
+  /* Kicker */
+
+  .hero-kicker {
+    padding: 7px 11px;
+
+    gap: 6px;
+
+    margin-bottom: 17px;
+
+    font-size: 6.5px;
+
+    letter-spacing: 0.7px;
+  }
+
+
+  /* Intro */
+
+  .hero-intro {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+  }
+
+
+  /* Name */
+
+  .hero-title {
+    font-size: clamp(
+      3.2rem,
+      17vw,
+      5rem
+    );
+
+    line-height: 0.87;
+
+    letter-spacing: -3px;
+  }
+
+
+  /* Roles */
+
+  .hero-role {
+    max-width: 300px;
+
+    margin-top: 15px;
+
+    gap: 5px;
+
+    font-size: 6px;
+
+    line-height: 1.8;
+  }
+
+
+  /* Description */
+
+  .hero-description {
+    max-width: 300px;
+
+    margin-top: 15px;
+
+    font-size: 10.5px;
+
+    line-height: 1.65;
+  }
+
+
+  /* Buttons */
+
+  .hero-buttons {
+    width: 100%;
+
+    margin-top: 20px;
+
+    gap: 8px;
+  }
+
+  .hero-btn {
+    min-height: 40px;
+
+    padding: 9px 13px;
+
+    font-size: 7px;
+
+    gap: 8px;
+  }
+
+  .hero-btn.primary span {
+    font-size: 14px;
+  }
+
+  .play-icon {
+    width: 23px;
+    height: 23px;
+
+    font-size: 6px;
+  }
+
+
+  /* Stats */
+
+  .hero-stats {
+    width: 100%;
+
+    max-width: 285px;
+
+    margin-top: 19px;
+  }
+
+  .stat {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 8px 5px;
+  }
+
+  .stat strong {
+    font-size: 14px;
+  }
+
+  .stat span {
+    font-size: 5px;
+
+    letter-spacing: 0.4px;
+  }
+
+
+  /* Avatar */
+
+  .avatar-container {
+    width: 105vw;
+
+    height: 55vh;
+
+    right: -30vw;
+
+    bottom: -3vh;
+
+    opacity: 0.38;
+
+    z-index: 5;
+  }
+
+  .hero-avatar {
+    width: 100%;
+
+    max-width: none;
+
+    max-height: 58vh;
+  }
+
+  .avatar-glow {
+    width: 90%;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   480px AND BELOW
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding:
+      86px
+      5vw
+      38px;
+  }
+
+
+  .hero-kicker {
+    padding: 6px 9px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.4px;
+  }
+
+
+  .hero-intro {
+    font-size: 10px;
+  }
+
+
+  .hero-title {
+    font-size: clamp(
+      3rem,
+      17vw,
+      4.5rem
+    );
+
+    letter-spacing: -2.8px;
+  }
+
+
+  .hero-role {
+    max-width: 275px;
+
+    font-size: 5.8px;
+
+    line-height: 1.8;
+  }
+
+
+  .hero-description {
+    max-width: 270px;
+
+    font-size: 10px;
+  }
+
+
+  /* Buttons become vertical */
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    width: 100%;
+  }
+
+  .hero-btn {
+    min-width: 145px;
+
+    min-height: 40px;
+
+    padding: 9px 13px;
+  }
+
+
+  /* Stats */
+
+  .hero-stats {
+    width: 100%;
+
+    max-width: 275px;
+  }
+
+  .stat {
+    padding: 8px 4px;
+  }
+
+  .stat strong {
+    font-size: 13px;
+  }
+
+  .stat span {
+    font-size: 4.5px;
+  }
+
+
+  /* Avatar */
+
+  .avatar-container {
+    width: 115vw;
+
+    height: 52vh;
+
+    right: -40vw;
+
+    bottom: -2vh;
+
+    opacity: 0.32;
+  }
+
+  .hero-avatar {
+    max-height: 55vh;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   360px AND BELOW
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .hero {
+    padding:
+      80px
+      5vw
+      30px;
+  }
+
+
+  .hero-title {
+    font-size: 2.9rem;
+
+    letter-spacing: -2.5px;
+  }
+
+
+  .hero-description {
+    max-width: 250px;
+
+    font-size: 9.5px;
+  }
+
+
+  .hero-buttons {
+    margin-top: 17px;
+  }
+
+
+  .hero-stats {
+    max-width: 255px;
+
+    margin-top: 17px;
+  }
+
+
+  .stat strong {
+    font-size: 12px;
+  }
+
+  .stat span {
+    font-size: 4px;
+  }
+
+
+  .avatar-container {
+    width: 125vw;
+
+    height: 48vh;
+
+    right: -50vw;
+
+    bottom: -2vh;
+
+    opacity: 0.27;
+  }
+}

@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Experience.css";
 
 gsap.registerPlugin(ScrollTrigger);
+const BASE_URL = import.meta.env.BASE_URL;
+
 
 const achievements = [
   {
@@ -44,17 +46,17 @@ const certificates = [
   {
     number: "01",
     title: "CERTIFICATION",
-    image: "/certificates/Certificate1.jpeg",
+    image: `${BASE_URL}/certificates/Certificate1.jpeg`,
   },
   {
     number: "02",
     title: "CERTIFICATION",
-    image: "/certificates/Certificate2.png",
+    image: `${BASE_URL}/certificates/Certificate2.png`,
   },
   {
     number: "03",
     title: "CERTIFICATION",
-    image: "/certificates/Certificate3.jpeg",
+    image: `${BASE_URL}/certificates/Certificate3.jpeg`,
   },
 ];
 

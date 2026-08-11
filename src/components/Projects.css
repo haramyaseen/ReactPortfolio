@@ -1,59 +1,43 @@
 .projects-section {
   position: relative;
-
   min-height: 100vh;
-
   overflow: hidden;
 
-  padding:
-    180px 7vw
-    150px;
+  padding: 180px 7vw 150px;
 
   background: #08070a;
-
   color: #f5edf8;
 }
 
-
-/* =================================
+/* ================================
    BACKGROUND
-================================= */
+================================ */
 
 .projects-big-text {
   position: absolute;
-
   top: 90px;
   left: -5%;
 
   white-space: nowrap;
 
-  font-size:
-    clamp(
-      130px,
-      20vw,
-      330px
-    );
-
-  line-height: .8;
+  font-size: clamp(130px, 20vw, 330px);
+  line-height: 0.8;
 
   font-weight: 900;
-
   letter-spacing: -18px;
 
-  color:
-    rgba(255,255,255,.018);
+  color: rgba(255, 255, 255, 0.018);
 
   pointer-events: none;
+  user-select: none;
 }
 
-
-/* =================================
+/* ================================
    HEADER
-================================= */
+================================ */
 
 .projects-header {
   position: relative;
-
   z-index: 2;
 
   max-width: 950px;
@@ -61,151 +45,124 @@
   margin-bottom: 120px;
 }
 
-
 .projects-eyebrow {
   display: flex;
-
-  gap: 14px;
-
   align-items: center;
+  gap: 14px;
 
   margin-bottom: 35px;
 
   color: #817985;
 
-  font-family:
-    "DM Mono",
-    monospace;
-
+  font-family: "DM Mono", monospace;
   font-size: 9px;
-
   letter-spacing: 2px;
 }
-
 
 .projects-eyebrow span {
   color: #b85cff;
 }
 
-
 .projects-heading {
   display: flex;
-
   flex-direction: column;
 
   overflow: hidden;
 
   margin: 0;
 
-  font-size:
-    clamp(
-      70px,
-      11vw,
-      170px
-    );
+  font-size: clamp(70px, 11vw, 170px);
 
-  line-height: .76;
-
+  line-height: 0.76;
   letter-spacing: -9px;
 
   font-weight: 900;
 }
 
+.projects-heading span {
+  display: block;
+}
 
 .projects-heading span:nth-child(2) {
   margin-left: 8vw;
 
   color: transparent;
 
-  -webkit-text-stroke:
-    1px rgba(220,200,230,.5);
+  -webkit-text-stroke: 1px rgba(220, 200, 230, 0.5);
 }
-
 
 .projects-heading span:nth-child(3) {
-  color: #b85cff;
-
   margin-left: 16vw;
-}
 
+  color: #b85cff;
+}
 
 .projects-intro {
   max-width: 520px;
 
-  margin:
-    55px 0 0 12vw;
+  margin: 55px 0 0 12vw;
 
   color: #817985;
 
   font-size: 11px;
-
   line-height: 1.9;
 }
 
-
-/* =================================
+/* ================================
    PROJECT LIST
-================================= */
+================================ */
 
 .projects-list {
   position: relative;
-
   z-index: 3;
 
+  width: 100%;
   max-width: 1250px;
 
-  margin: auto;
+  margin: 0 auto;
 }
 
-
-/* =================================
+/* ================================
    CARD
-================================= */
+================================ */
 
 .project-card {
   position: relative;
 
   display: grid;
 
-  grid-template-columns:
-    1.25fr .75fr;
+  grid-template-columns: 1.25fr 0.75fr;
 
+  width: 100%;
   min-height: 650px;
 
   margin-bottom: 150px;
 
-  background:
-    rgba(255,255,255,.02);
+  background: rgba(255, 255, 255, 0.02);
 
-  border:
-    1px solid
-    rgba(255,255,255,.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 28px;
 
   box-shadow:
-    0 40px 80px rgba(0, 0, 0, .16);
+    0 40px 80px rgba(0, 0, 0, 0.16);
 
   overflow: hidden;
 
   transition:
-    border-color .5s ease,
-    transform .5s ease,
-    box-shadow .5s ease;
+    border-color 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
-
 
 .project-card:hover {
-  border-color:
-    rgba(185,92,255,.35);
+  border-color: rgba(185, 92, 255, 0.35);
 
-  transform:
-    translateY(-12px);
+  transform: translateY(-12px);
 
   box-shadow:
-    0 60px 120px rgba(0, 0, 0, .24);
+    0 60px 120px rgba(0, 0, 0, 0.24);
 }
-
 
 .project-card::before {
   content: "";
@@ -215,72 +172,72 @@
   inset: -15%;
 
   background:
-    radial-gradient(circle at 25% 25%, rgba(184,92,255,.12), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(255,255,255,.06), transparent 18%);
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(184, 92, 255, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(255, 255, 255, 0.06),
+      transparent 18%
+    );
 
-  opacity: .28;
+  opacity: 0.28;
 
   pointer-events: none;
-}
 
+  z-index: 0;
+}
 
 .project-reverse {
-  grid-template-columns:
-    .75fr 1.25fr;
+  grid-template-columns: 0.75fr 1.25fr;
 }
 
-
-.project-reverse
-.project-image-wrapper {
+.project-reverse .project-image-wrapper {
   order: 2;
 }
 
-
-.project-reverse
-.project-content {
+.project-reverse .project-content {
   order: 1;
 }
 
-
-/* =================================
+/* ================================
    NUMBER
-================================= */
+================================ */
 
 .project-number {
   position: absolute;
 
-  z-index: 5;
+  z-index: 6;
 
   left: 25px;
   top: 20px;
 
   font-size: 110px;
-
   line-height: 1;
 
   font-weight: 900;
 
-  color:
-    rgba(190,90,255,.09);
+  color: rgba(190, 90, 255, 0.09);
 
   pointer-events: none;
 }
 
-
-/* =================================
+/* ================================
    IMAGE
-================================= */
+================================ */
 
 .project-image-wrapper {
   position: relative;
 
+  min-width: 0;
   min-height: 650px;
 
   overflow: hidden;
 
   background: #0d0b10;
 }
-
 
 .project-image {
   position: absolute;
@@ -297,18 +254,16 @@
   transform: scale(1.08);
 
   filter:
-    saturate(.94)
+    saturate(0.94)
     contrast(1.12)
-    brightness(.95);
+    brightness(0.95);
 
   transition:
-    transform .8s ease,
-    filter .6s ease;
+    transform 0.8s ease,
+    filter 0.6s ease;
 }
 
-
-.project-card:hover
-.project-image {
+.project-card:hover .project-image {
   transform: scale(1.12);
 
   filter:
@@ -316,7 +271,6 @@
     contrast(1.14)
     brightness(1);
 }
-
 
 .project-image-glow {
   position: absolute;
@@ -331,14 +285,14 @@
 
   border-radius: 50%;
 
-  background:
-    rgba(190,90,255,.2);
+  background: rgba(190, 90, 255, 0.2);
 
   filter: blur(100px);
 
-  opacity: .3;
-}
+  opacity: 0.3;
 
+  pointer-events: none;
+}
 
 .project-image-overlay {
   position: absolute;
@@ -350,23 +304,22 @@
   background:
     linear-gradient(
       90deg,
-      rgba(8,7,10,.7),
+      rgba(8, 7, 10, 0.7),
       transparent 45%,
-      rgba(8,7,10,.35)
+      rgba(8, 7, 10, 0.35)
     );
 
   pointer-events: none;
 }
 
-
-/* =================================
-   VIEW CIRCLE
-================================= */
+/* ================================
+   VIEW
+================================ */
 
 .project-view {
   position: absolute;
 
-  z-index: 5;
+  z-index: 7;
 
   right: 35px;
   bottom: 35px;
@@ -379,32 +332,28 @@
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   border:
-    1px solid
-    rgba(255,255,255,.2);
+    1px solid rgba(255, 255, 255, 0.2);
 
   border-radius: 50%;
 
   background:
-    rgba(12,10,14,.45);
+    rgba(12, 10, 14, 0.45);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter: blur(12px);
 
   color: #fff;
 
   text-decoration: none;
 
   transition:
-    transform .45s ease,
-    background .45s ease,
-    border-color .45s ease,
-    box-shadow .45s ease;
+    transform 0.45s ease,
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
 }
-
 
 .project-view:hover {
   transform:
@@ -412,37 +361,30 @@
     scale(1.08);
 
   background:
-    rgba(184,92,255,.18);
+    rgba(184, 92, 255, 0.18);
 
   border-color:
-    rgba(184,92,255,.45);
+    rgba(184, 92, 255, 0.45);
 
   box-shadow:
-    0 24px 60px rgba(184,92,255,.12);
+    0 24px 60px rgba(184, 92, 255, 0.12);
 }
 
-
 .project-view.disabled {
-  opacity: .65;
+  opacity: 0.65;
 
   cursor: not-allowed;
 
   pointer-events: none;
 }
 
-
 .project-view span {
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 8px;
 
   letter-spacing: 2px;
-
-  text-transform: uppercase;
 }
-
 
 .project-view strong {
   margin-top: 6px;
@@ -452,36 +394,36 @@
   font-size: 22px;
 }
 
-
-/* IMAGE LABEL */
+/* ================================
+   IMAGE LABEL
+================================ */
 
 .project-image-label {
   position: absolute;
 
-  z-index: 5;
+  z-index: 6;
 
   left: 30px;
   bottom: 30px;
 
-  color:
-    rgba(255,255,255,.5);
+  color: rgba(255, 255, 255, 0.5);
 
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 7px;
 
   letter-spacing: 2px;
 }
 
-
-/* =================================
+/* ================================
    CONTENT
-================================= */
+================================ */
 
 .project-content {
   position: relative;
+  z-index: 2;
+
+  min-width: 0;
 
   display: flex;
 
@@ -489,16 +431,13 @@
 
   justify-content: center;
 
-  padding:
-    80px 70px;
+  padding: 80px 70px;
 
   background:
-    rgba(255,255,255,.02);
+    rgba(255, 255, 255, 0.02);
 
-  backdrop-filter:
-    blur(8px);
+  backdrop-filter: blur(8px);
 }
-
 
 .project-content::before {
   content: "";
@@ -508,50 +447,41 @@
   inset: 0;
 
   background:
-    linear-gradient(180deg, transparent 0%, rgba(255,255,255,.04) 100%);
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
 
   pointer-events: none;
 }
-
 
 .project-type {
   margin-bottom: 28px;
 
   color: #c390ff;
 
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 8px;
 
   letter-spacing: 2px;
-
-  text-transform: uppercase;
 }
-
 
 .project-content h3 {
   margin: 0;
 
-  font-size:
-    clamp(
-      50px,
-      6vw,
-      85px
-    );
+  font-size: clamp(50px, 6vw, 85px);
 
-  line-height: .85;
+  line-height: 0.85;
 
   letter-spacing: -4px;
 
   font-weight: 900;
 }
 
-
 .project-content h4 {
-  margin:
-    18px 0 30px;
+  margin: 18px 0 30px;
 
   color: #a897b4;
 
@@ -561,7 +491,6 @@
 
   font-weight: 600;
 }
-
 
 .project-content p {
   max-width: 470px;
@@ -575,10 +504,9 @@
   line-height: 1.9;
 }
 
-
-/* =================================
+/* ================================
    TECH
-================================= */
+================================ */
 
 .project-tech {
   display: flex;
@@ -590,50 +518,44 @@
   margin-top: 35px;
 }
 
-
 .project-tech span {
-  padding:
-    8px 10px;
+  padding: 8px 10px;
 
   border:
-    1px solid
-    rgba(255,255,255,.08);
+    1px solid rgba(255, 255, 255, 0.08);
 
   color: #8d8491;
 
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 6px;
 
-  letter-spacing: .7px;
+  letter-spacing: 0.7px;
 
-  transition:
-    .3s ease;
+  transition: 0.3s ease;
 }
-
 
 .project-tech span:hover {
   color: #fff;
 
   border-color:
-    rgba(185,92,255,.4);
+    rgba(185, 92, 255, 0.4);
 
-  transform:
-    translateY(-3px);
+  transform: translateY(-3px);
 }
 
-
-/* =================================
-   PROJECT FOOTER
-================================= */
+/* ================================
+   FOOTER
+================================ */
 
 .project-footer {
   display: flex;
 
   justify-content: space-between;
 
+  gap: 20px;
+
+  width: 100%;
   max-width: 450px;
 
   margin-top: 50px;
@@ -641,24 +563,20 @@
   padding-top: 20px;
 
   border-top:
-    1px solid
-    rgba(255,255,255,.07);
+    1px solid rgba(255, 255, 255, 0.07);
 
   color: #4f4853;
 
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 6px;
 
   letter-spacing: 1.5px;
 }
 
-
-/* =================================
+/* ================================
    PROGRESS
-================================= */
+================================ */
 
 .project-progress {
   position: absolute;
@@ -667,22 +585,18 @@
   bottom: 0;
 
   width: 100%;
-
   height: 2px;
 
-  transform:
-    scaleX(0);
+  transform: scaleX(0);
 
   transform-origin: left;
 
-  background:
-    #b85cff;
+  background: #b85cff;
 }
 
-
-/* =================================
+/* ================================
    END
-================================= */
+================================ */
 
 .projects-end {
   position: relative;
@@ -691,122 +605,116 @@
 
   max-width: 900px;
 
-  margin:
-    50px auto 0;
+  margin: 50px auto 0;
 
   text-align: center;
 }
 
-
 .projects-end > span {
   color: #716a76;
 
-  font-family:
-    "DM Mono",
-    monospace;
+  font-family: "DM Mono", monospace;
 
   font-size: 7px;
 
   letter-spacing: 2px;
 }
 
-
 .projects-end h3 {
-  margin:
-    30px 0;
+  margin: 30px 0;
 
-  font-size:
-    clamp(
-      60px,
-      9vw,
-      120px
-    );
+  font-size: clamp(60px, 9vw, 120px);
 
-  line-height: .8;
+  line-height: 0.8;
 
   letter-spacing: -7px;
 }
-
 
 .projects-end h3 strong {
   color: #b85cff;
 }
 
-
 .projects-line {
   width: 100%;
-
   height: 1px;
 
   background:
-    rgba(255,255,255,.08);
+    rgba(255, 255, 255, 0.08);
 }
 
-
-/* =================================
+/* ==================================================
    TABLET
-================================= */
+================================================== */
 
-@media (max-width: 900px) {
-
+@media (max-width: 1000px) {
   .projects-section {
-    padding:
-      130px 5vw 100px;
+    padding: 130px 5vw 100px;
+  }
+
+  .projects-header {
+    margin-bottom: 90px;
+  }
+
+  .projects-heading {
+    font-size: clamp(65px, 12vw, 120px);
   }
 
   .project-card,
   .project-reverse {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
-  .project-reverse
-  .project-image-wrapper,
-  .project-reverse
-  .project-content {
+  .project-reverse .project-image-wrapper,
+  .project-reverse .project-content {
     order: initial;
   }
 
   .project-image-wrapper {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   .project-content {
-    padding:
-      70px 45px;
+    padding: 70px 50px;
   }
 
+  .project-content h3 {
+    font-size: clamp(55px, 9vw, 80px);
+  }
+
+  .project-number {
+    font-size: 90px;
+  }
 }
 
+/* ==================================================
+   SMALL TABLET
+================================================== */
 
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 600px) {
-
+@media (max-width: 768px) {
   .projects-section {
-    padding:
-      110px 20px 80px;
+    padding: 110px 5vw 80px;
   }
 
   .projects-big-text {
-    top: 100px;
+    top: 80px;
 
-    font-size: 105px;
+    font-size: 100px;
 
     letter-spacing: -8px;
   }
 
-  .projects-heading {
-    font-size:
-      clamp(
-        60px,
-        18vw,
-        95px
-      );
+  .projects-header {
+    margin-bottom: 70px;
+  }
 
-    letter-spacing: -5px;
+  .projects-eyebrow {
+    margin-bottom: 25px;
+  }
+
+  .projects-heading {
+    font-size: clamp(58px, 15vw, 100px);
+
+    letter-spacing: -6px;
   }
 
   .projects-heading span:nth-child(2) {
@@ -818,69 +726,377 @@
   }
 
   .projects-intro {
-    margin:
-      40px 0 0 5vw;
+    margin: 40px 0 0 5vw;
 
-    font-size: 9px;
+    max-width: 450px;
+
+    font-size: 10px;
   }
 
   .project-card {
-    min-height: auto;
+    border-radius: 22px;
 
     margin-bottom: 80px;
   }
 
-  .project-number {
-    font-size: 75px;
-
-    left: 15px;
-    top: 15px;
-  }
-
   .project-image-wrapper {
-    min-height: 300px;
+    min-height: 420px;
   }
 
   .project-content {
-    padding:
-      45px 25px 50px;
+    padding: 55px 35px 60px;
   }
 
-  .project-content h3 {
-    font-size: 52px;
+  .project-number {
+    left: 18px;
+    top: 15px;
 
-    letter-spacing: -3px;
-  }
-
-  .project-content h4 {
-    font-size: 8px;
-  }
-
-  .project-content p {
-    font-size: 9px;
+    font-size: 80px;
   }
 
   .project-view {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
 
-    right: 20px;
-    bottom: 20px;
+    right: 22px;
+    bottom: 22px;
   }
 
   .project-image-label {
-    left: 20px;
-    bottom: 20px;
+    left: 22px;
+    bottom: 25px;
+  }
+
+  .project-content h3 {
+    font-size: clamp(50px, 12vw, 75px);
+
+    letter-spacing: -4px;
+  }
+
+  .project-content h4 {
+    margin: 15px 0 25px;
+
+    font-size: 9px;
+  }
+
+  .project-content p {
+    font-size: 10px;
   }
 
   .project-footer {
     margin-top: 35px;
   }
+}
 
-  .projects-end h3 {
-    font-size: 60px;
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 90px 16px 70px;
+  }
+
+  .projects-big-text {
+    top: 80px;
+    left: -15%;
+
+    font-size: 75px;
+
+    letter-spacing: -6px;
+  }
+
+  .projects-header {
+    margin-bottom: 60px;
+  }
+
+  .projects-eyebrow {
+    gap: 10px;
+
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+
+  .projects-heading {
+    font-size: clamp(52px, 17vw, 82px);
+
+    line-height: 0.8;
 
     letter-spacing: -4px;
   }
 
+  .projects-heading span:nth-child(2) {
+    margin-left: 4vw;
+
+    -webkit-text-stroke-width: 0.8px;
+  }
+
+  .projects-heading span:nth-child(3) {
+    margin-left: 8vw;
+  }
+
+  .projects-intro {
+    margin: 35px 0 0 4vw;
+
+    max-width: 320px;
+
+    font-size: 9px;
+
+    line-height: 1.8;
+  }
+
+  /* CARD */
+
+  .project-card,
+  .project-reverse {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    min-height: 0;
+
+    margin-bottom: 65px;
+
+    border-radius: 18px;
+
+    transform: none !important;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  /* IMAGE */
+
+  .project-image-wrapper,
+  .project-reverse .project-image-wrapper {
+    order: 1;
+
+    width: 100%;
+
+    height: 280px;
+    min-height: 280px;
+
+    flex-shrink: 0;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transform: scale(1.02);
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.04);
+  }
+
+  .project-image-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8, 7, 10, 0.2),
+        transparent 45%,
+        rgba(8, 7, 10, 0.65)
+      );
+  }
+
+  .project-image-glow {
+    width: 150px;
+    height: 150px;
+
+    filter: blur(60px);
+  }
+
+  /* NUMBER */
+
+  .project-number {
+    left: 12px;
+    top: 10px;
+
+    font-size: 60px;
+
+    z-index: 10;
+  }
+
+  /* VIEW */
+
+  .project-view {
+    width: 68px;
+    height: 68px;
+
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .project-view span {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .project-view strong {
+    margin-top: 3px;
+
+    font-size: 18px;
+  }
+
+  .project-image-label {
+    left: 15px;
+    bottom: 18px;
+
+    font-size: 6px;
+  }
+
+  /* CONTENT */
+
+  .project-content,
+  .project-reverse .project-content {
+    order: 2;
+
+    width: 100%;
+
+    padding: 35px 22px 40px;
+  }
+
+  .project-type {
+    margin-bottom: 20px;
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .project-content h3 {
+    font-size: clamp(44px, 14vw, 65px);
+
+    line-height: 0.85;
+
+    letter-spacing: -3px;
+
+    word-break: break-word;
+  }
+
+  .project-content h4 {
+    margin: 13px 0 22px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+  }
+
+  .project-content p {
+    max-width: 100%;
+
+    font-size: 9px;
+
+    line-height: 1.8;
+  }
+
+  /* TECH */
+
+  .project-tech {
+    gap: 5px;
+
+    margin-top: 25px;
+  }
+
+  .project-tech span {
+    padding: 7px 9px;
+
+    font-size: 6px;
+  }
+
+  /* FOOTER */
+
+  .project-footer {
+    gap: 10px;
+
+    margin-top: 28px;
+
+    padding-top: 15px;
+
+    font-size: 5px;
+  }
+
+  /* END */
+
+  .projects-end {
+    margin-top: 20px;
+  }
+
+  .projects-end > span {
+    font-size: 6px;
+  }
+
+  .projects-end h3 {
+    margin: 25px 0;
+
+    font-size: clamp(48px, 15vw, 70px);
+
+    letter-spacing: -4px;
+  }
+}
+
+/* ==================================================
+   VERY SMALL PHONES
+================================================== */
+
+@media (max-width: 380px) {
+  .projects-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .projects-heading {
+    font-size: 48px;
+  }
+
+  .projects-intro {
+    font-size: 8px;
+  }
+
+  .project-image-wrapper {
+    height: 240px;
+    min-height: 240px;
+  }
+
+  .project-content {
+    padding: 30px 18px 35px;
+  }
+
+  .project-content h3 {
+    font-size: 42px;
+  }
+
+  .project-number {
+    font-size: 52px;
+  }
+
+  .project-view {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ==================================================
+   TOUCH DEVICES
+================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  .project-card:hover {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.02);
+  }
+
+  .project-view:hover {
+    transform: none;
+  }
 }

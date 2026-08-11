@@ -9,7 +9,6 @@ function Hero() {
     const hero = heroRef.current;
 
     const ctx = gsap.context(() => {
-
       // =====================================
       // HERO ENTRANCE
       // =====================================
@@ -92,7 +91,6 @@ function Hero() {
           "-=0.4"
         );
 
-
       // =====================================
       // AVATAR ENTRANCE
       // =====================================
@@ -118,7 +116,6 @@ function Hero() {
         }
       );
 
-
       // =====================================
       // AVATAR FLOAT
       // =====================================
@@ -131,7 +128,6 @@ function Hero() {
         ease: "sine.inOut",
         delay: 2,
       });
-
 
       // =====================================
       // AVATAR GLOW
@@ -146,7 +142,6 @@ function Hero() {
         ease: "sine.inOut",
       });
 
-
       // =====================================
       // TECH CARDS
       // =====================================
@@ -159,7 +154,6 @@ function Hero() {
         delay: 1.2,
         ease: "back.out(1.7)",
       });
-
 
       // =====================================
       // TECH CARD FLOAT
@@ -197,23 +191,19 @@ function Hero() {
         ease: "sine.inOut",
       });
 
+      // =====================================
+      // DESKTOP MOUSE PARALLAX
+      // =====================================
 
-      // =====================================
-      // MOUSE PARALLAX
-      // =====================================
+      const isDesktopPointer =
+        window.matchMedia("(pointer: fine)").matches;
 
       const handleMouseMove = (event) => {
-
         const mouseX =
-          event.clientX /
-            window.innerWidth -
-          0.5;
+          event.clientX / window.innerWidth - 0.5;
 
         const mouseY =
-          event.clientY /
-            window.innerHeight -
-          0.5;
-
+          event.clientY / window.innerHeight - 0.5;
 
         gsap.to(".hero-avatar", {
           x: mouseX * 20,
@@ -223,14 +213,12 @@ function Hero() {
           ease: "power3.out",
         });
 
-
         gsap.to(".avatar-glow", {
           x: mouseX * 35,
           y: mouseY * 25,
           duration: 1.2,
           ease: "power3.out",
         });
-
 
         gsap.to(".react-label", {
           x: mouseX * 30,
@@ -249,95 +237,106 @@ function Hero() {
           y: mouseY * 25,
           duration: 1,
         });
-
       };
 
-
-      window.addEventListener(
-        "mousemove",
-        handleMouseMove
-      );
-
+      if (isDesktopPointer) {
+        window.addEventListener(
+          "mousemove",
+          handleMouseMove
+        );
+      }
 
       // =====================================
       // BUTTON MAGNETIC EFFECT
       // =====================================
 
-      const buttons =
-        hero.querySelectorAll(
-          ".hero-btn"
-        );
+      const buttons = hero.querySelectorAll(".hero-btn");
 
-      buttons.forEach((button) => {
+      const buttonMouseMove = (event) => {
+        const button = event.currentTarget;
 
-        button.addEventListener(
-          "mousemove",
-          (event) => {
+        const rect = button.getBoundingClientRect();
 
-            const rect =
-              button.getBoundingClientRect();
+        const x =
+          event.clientX -
+          rect.left -
+          rect.width / 2;
 
-            const x =
-              event.clientX -
-              rect.left -
-              rect.width / 2;
+        const y =
+          event.clientY -
+          rect.top -
+          rect.height / 2;
 
-            const y =
-              event.clientY -
-              rect.top -
-              rect.height / 2;
+        gsap.to(button, {
+          x: x * 0.12,
+          y: y * 0.12,
+          duration: 0.3,
+        });
+      };
 
-            gsap.to(button, {
-              x: x * 0.12,
-              y: y * 0.12,
-              duration: 0.3,
-            });
+      const buttonMouseLeave = (event) => {
+        gsap.to(event.currentTarget, {
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: "elastic.out(1,0.4)",
+        });
+      };
 
-          }
-        );
+      if (isDesktopPointer) {
+        buttons.forEach((button) => {
+          button.addEventListener(
+            "mousemove",
+            buttonMouseMove
+          );
 
-        button.addEventListener(
-          "mouseleave",
-          () => {
-
-            gsap.to(button, {
-              x: 0,
-              y: 0,
-              duration: 0.6,
-              ease: "elastic.out(1,0.4)",
-            });
-
-          }
-        );
-
-      });
-
+          button.addEventListener(
+            "mouseleave",
+            buttonMouseLeave
+          );
+        });
+      }
 
       // =====================================
       // SCROLL INDICATOR
       // =====================================
 
-      gsap.to(".scroll-mouse::after", {
+      gsap.to(".scroll-mouse", {
         y: 8,
         duration: 1,
         repeat: -1,
         yoyo: true,
+        ease: "sine.inOut",
       });
 
+      // =====================================
+      // CLEANUP
+      // =====================================
 
       return () => {
-        window.removeEventListener(
-          "mousemove",
-          handleMouseMove
-        );
-      };
+        if (isDesktopPointer) {
+          window.removeEventListener(
+            "mousemove",
+            handleMouseMove
+          );
 
+          buttons.forEach((button) => {
+            button.removeEventListener(
+              "mousemove",
+              buttonMouseMove
+            );
+
+            button.removeEventListener(
+              "mouseleave",
+              buttonMouseLeave
+            );
+          });
+        }
+      };
     }, hero);
 
     return () => ctx.revert();
-
   }, []);
-
 
   return (
     <section
@@ -345,26 +344,27 @@ function Hero() {
       className="hero"
       id="home"
     >
-
-      {/* BACKGROUND */}
+      {/* =====================================
+          BACKGROUND
+      ===================================== */}
 
       <div className="hero-background">
-
         <div className="background-grid"></div>
 
         <div className="background-glow glow-one"></div>
 
         <div className="background-glow glow-two"></div>
-
       </div>
 
-
-      {/* LEFT CONTENT */}
+      {/* =====================================
+          LEFT CONTENT
+      ===================================== */}
 
       <div className="hero-content">
 
-        <div className="hero-kicker">
+        {/* KICKER */}
 
+        <div className="hero-kicker">
           <span className="code-symbol">
             &lt;/&gt;
           </span>
@@ -374,14 +374,15 @@ function Hero() {
           <span className="kicker-dot"></span>
 
           DESIGNER
-
         </div>
 
+        {/* INTRO */}
 
         <p className="hero-intro">
           HI, I'M
         </p>
 
+        {/* NAME */}
 
         <h1 className="hero-title">
 
@@ -395,6 +396,7 @@ function Hero() {
 
         </h1>
 
+        {/* ROLES */}
 
         <div className="hero-role">
 
@@ -410,16 +412,16 @@ function Hero() {
 
         </div>
 
+        {/* DESCRIPTION */}
 
         <p className="hero-description">
-
           I create stunning digital experiences
           where design meets code. From interactive
           websites to powerful systems, I build,
           design and develop with passion.
-
         </p>
 
+        {/* BUTTONS */}
 
         <div className="hero-buttons">
 
@@ -432,25 +434,22 @@ function Hero() {
             <span>
               →
             </span>
-
           </a>
-
 
           <a
             href="#about"
             className="hero-btn video-btn"
           >
-
             <span className="play-icon">
               ▶
             </span>
 
             WATCH INTRO
-
           </a>
 
         </div>
 
+        {/* STATS */}
 
         <div className="hero-stats">
 
@@ -473,37 +472,36 @@ function Hero() {
 
       </div>
 
-
-      {/* AVATAR */}
+      {/* =====================================
+          AVATAR
+      ===================================== */}
 
       <div className="avatar-container">
 
         <div className="avatar-glow"></div>
 
         <img
-          src="/avatar.png"
+          src={`${import.meta.env.BASE_URL}avatar.png`}
           alt="Haram Yaseen"
           className="hero-avatar"
         />
 
+        {/* TECH LABELS */}
 
         <div className="tech-label react-label">
           <span>⚛</span>
           React
         </div>
 
-
         <div className="tech-label dotnet-label">
           <span>◆</span>
           .NET
         </div>
 
-
         <div className="tech-label gsap-label">
           <span>✦</span>
           Html/css
         </div>
-
 
         <div className="tech-label design-label">
           <span>✦</span>
@@ -512,8 +510,9 @@ function Hero() {
 
       </div>
 
-
-      {/* SOCIAL */}
+      {/* =====================================
+          SOCIAL
+      ===================================== */}
 
       <div className="hero-social">
 
@@ -531,8 +530,9 @@ function Hero() {
 
       </div>
 
-
-      {/* SCROLL */}
+      {/* =====================================
+          SCROLL
+      ===================================== */}
 
       <div className="hero-scroll">
 

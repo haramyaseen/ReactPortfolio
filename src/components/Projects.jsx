@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Projects.css";
-
+const BASE_URL = "/ReactPortfolio";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
@@ -14,7 +14,7 @@ const projects = [
     description:
       "A complete hotel management experience designed around structured workflows, modern interfaces and responsive user interaction.",
     tech: ["React", "JavaScript", "CSS", "UI/UX"],
-    image: "/projects/hotel.png",
+    image: `${BASE_URL}/projects/hotel.png`,
     link: "",
   },
 
@@ -33,7 +33,7 @@ const projects = [
       "Node.js",
       "MongoDB",
     ],
-    image: "/projects/hershield.png",
+    image: `${BASE_URL}/projects/hershield.png`,
     link: "",
   },
 
@@ -44,13 +44,8 @@ const projects = [
     type: "ASP.NET APPLICATION",
     description:
       "A structured management platform designed for mall operations, stores, services and administrative workflows.",
-    tech: [
-      "ASP.NET",
-      "C#",
-      "SQL Server",
-      "Bootstrap",
-    ],
-    image: "/projects/mall.png",
+    tech: ["ASP.NET", "C#", "SQL Server", "Bootstrap"],
+    image: `${BASE_URL}/projects/mall.png`,
     link: "https://github.com/haramyaseen/SmartMallManagment",
   },
 
@@ -61,13 +56,8 @@ const projects = [
     type: "FRONTEND APPLICATION",
     description:
       "A clean and responsive currency conversion experience with API integration and a simple, intuitive interface.",
-    tech: [
-      "Flutter",
-      "Dart",
-      "Firebase",
-      "API",
-    ],
-    image: "/projects/currency.png",
+    tech: ["Flutter", "Dart", "Firebase", "API"],
+    image: `${BASE_URL}/projects/currency.png`,
     link: "https://sakina-saleem.github.io/CurrenSee/",
   },
 
@@ -78,13 +68,8 @@ const projects = [
     type: "FRONTEND WEBSITE",
     description:
       "A visually engaging travel website created around destinations, exploration and immersive browsing.",
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Responsive UI",
-    ],
-    image: "/projects/travelgo.png",
+    tech: ["HTML", "CSS", "JavaScript", "Responsive UI"],
+    image: `${BASE_URL}/projects/travelgo.png`,
     link: "https://haramyaseen.github.io/Travel-Website/",
   },
 
@@ -95,13 +80,8 @@ const projects = [
     type: "FRONTEND WEBSITE",
     description:
       "A playful web experience built around children's activities with a colorful visual interface and responsive layout.",
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "UI Design",
-    ],
-    image: "/projects/kidszone.png",
+    tech: ["HTML", "CSS", "JavaScript", "UI Design"],
+    image: `${BASE_URL}/projects/kidszone.png`,
     link: "https://haramyaseen.github.io/Kids_Zone/",
   },
 
@@ -112,13 +92,8 @@ const projects = [
     type: "FRONTEND WEBSITE",
     description:
       "A friendly pet-focused website combining visual storytelling, responsive design and a simple browsing experience.",
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Responsive",
-    ],
-    image: "/projects/petsheaven.png",
+    tech: ["HTML", "CSS", "JavaScript", "Responsive"],
+    image: `${BASE_URL}/projects/petsheaven.png`,
     link: "https://haramyaseen.github.io/Pets-Heaven/",
   },
 ];
@@ -128,12 +103,9 @@ function Projects() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards =
-        gsap.utils.toArray(".project-card");
+      const cards = gsap.utils.toArray(".project-card");
 
-      /* ================================
-         SECTION HEADER
-      ================================= */
+      /* HEADER */
 
       gsap.from(".projects-eyebrow", {
         y: 30,
@@ -170,45 +142,33 @@ function Projects() {
         },
       });
 
-
-      /* ================================
-         PROJECT CARDS
-      ================================= */
+      /* PROJECT CARDS */
 
       cards.forEach((card, index) => {
-        const image =
-          card.querySelector(".project-image");
-
-        const content =
-          card.querySelector(".project-content");
-
-        const number =
-          card.querySelector(".project-number");
-
-        const line =
-          card.querySelector(".project-progress");
-
+        const image = card.querySelector(".project-image");
+        const content = card.querySelector(".project-content");
+        const number = card.querySelector(".project-number");
+        const line = card.querySelector(".project-progress");
 
         /* CARD REVEAL */
 
         gsap.from(card, {
-          y: 120,
+          y: 100,
           opacity: 0,
-          duration: 1.1,
+          duration: 1,
           ease: "power4.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 82%",
+            start: "top 85%",
           },
         });
-
 
         /* IMAGE PARALLAX */
 
         gsap.fromTo(
           image,
           {
-            scale: 1.25,
+            scale: 1.12,
           },
           {
             scale: 1,
@@ -222,48 +182,33 @@ function Projects() {
           }
         );
 
-
         /* CONTENT */
 
         gsap.from(content, {
-          x: index % 2 === 0
-            ? -70
-            : 70,
-
+          x: index % 2 === 0 ? -60 : 60,
           opacity: 0,
-
           duration: 1,
-
           ease: "power4.out",
-
           scrollTrigger: {
             trigger: card,
-
-            start: "top 78%",
+            start: "top 80%",
           },
         });
-
 
         /* NUMBER */
 
         gsap.from(number, {
-          scale: 2,
-
+          scale: 1.7,
           opacity: 0,
-
           duration: 1,
-
           ease: "power4.out",
-
           scrollTrigger: {
             trigger: card,
-
             start: "top 82%",
           },
         });
 
-
-        /* PROGRESS LINE */
+        /* PROGRESS */
 
         gsap.fromTo(
           line,
@@ -272,50 +217,37 @@ function Projects() {
           },
           {
             scaleX: 1,
-
             transformOrigin: "left",
-
             ease: "none",
-
             scrollTrigger: {
               trigger: card,
-
               start: "top 80%",
-
               end: "bottom 60%",
-
               scrub: 1,
             },
           }
         );
 
-
-        /* ================================
-           MOUSE IMAGE MOVEMENT
-        ================================= */
+        /* DESKTOP MOUSE EFFECT ONLY */
 
         const moveImage = (e) => {
-          const rect =
-            card.getBoundingClientRect();
+          if (window.innerWidth <= 768) return;
+
+          const rect = card.getBoundingClientRect();
 
           const x =
-            (e.clientX - rect.left) /
-              rect.width -
-            0.5;
+            (e.clientX - rect.left) / rect.width - 0.5;
 
           const y =
-            (e.clientY - rect.top) /
-              rect.height -
-            0.5;
+            (e.clientY - rect.top) / rect.height - 0.5;
 
           gsap.to(image, {
-            x: x * 25,
-            y: y * 25,
+            x: x * 20,
+            y: y * 20,
             duration: 0.6,
             ease: "power3.out",
           });
         };
-
 
         const resetImage = () => {
           gsap.to(image, {
@@ -326,84 +258,47 @@ function Projects() {
           });
         };
 
-
-        card.addEventListener(
-          "mousemove",
-          moveImage
-        );
-
-        card.addEventListener(
-          "mouseleave",
-          resetImage
-        );
+        card.addEventListener("mousemove", moveImage);
+        card.addEventListener("mouseleave", resetImage);
       });
 
-
-      /* ================================
-         BIG BACKGROUND TEXT
-      ================================= */
+      /* BIG BACKGROUND TEXT */
 
       gsap.to(".projects-big-text", {
         xPercent: -20,
-
         scrollTrigger: {
           trigger: ".projects-section",
-
           start: "top bottom",
-
           end: "bottom top",
-
           scrub: 2,
         },
       });
-
-
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-
   return (
     <section
       ref={sectionRef}
       className="projects-section"
-      id="projects"
+      id="work"
     >
-
-      {/* BACKGROUND TEXT */}
-
       <div className="projects-big-text">
         SELECTED WORK
       </div>
 
-
-      {/* HEADER */}
-
       <div className="projects-header">
-
         <div className="projects-eyebrow">
           <span>02</span>
           SELECTED WORK
         </div>
 
-
         <h2 className="projects-heading">
-
-          <span>
-            THINGS
-          </span>
-
-          <span>
-            I'VE
-          </span>
-
-          <span>
-            BUILT.
-          </span>
-
+          <span>THINGS</span>
+          <span>I&apos;VE</span>
+          <span>BUILT.</span>
         </h2>
-
 
         <p className="projects-intro">
           A collection of applications,
@@ -411,37 +306,22 @@ function Projects() {
           created through code, creativity
           and problem solving.
         </p>
-
       </div>
 
-
-      {/* PROJECT LIST */}
-
       <div className="projects-list">
-
         {projects.map((project, index) => (
-
           <article
             className={`project-card ${
-              index % 2 !== 0
-                ? "project-reverse"
-                : ""
+              index % 2 !== 0 ? "project-reverse" : ""
             }`}
             key={project.number}
           >
-
-            {/* NUMBER */}
-
             <div className="project-number">
               {project.number}
             </div>
 
-
-            {/* IMAGE */}
-
             <div className="project-image-wrapper">
-
-              <div className="project-image-glow"></div>
+              <div className="project-image-glow" />
 
               <img
                 src={project.image}
@@ -449,122 +329,77 @@ function Projects() {
                 className="project-image"
               />
 
-
-              <div className="project-image-overlay">
-              </div>
-
+              <div className="project-image-overlay" />
 
               <a
-                className={`project-view ${project.link ? "" : "disabled"}`}
+                className={`project-view ${
+                  project.link ? "" : "disabled"
+                }`}
                 href={project.link || undefined}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={project.link ? `Open ${project.title}` : "No project link provided"}
+                aria-label={
+                  project.link
+                    ? `Open ${project.title}`
+                    : "No project link provided"
+                }
                 onClick={(e) => {
-                  if (!project.link) e.preventDefault();
+                  if (!project.link) {
+                    e.preventDefault();
+                  }
                 }}
               >
-                <span>
-                  VIEW
-                </span>
-
-                <strong>
-                  ↗
-                </strong>
+                <span>VIEW</span>
+                <strong>↗</strong>
               </a>
-
 
               <div className="project-image-label">
                 PROJECT {project.number}
               </div>
-
             </div>
 
-
-            {/* CONTENT */}
-
             <div className="project-content">
-
               <div className="project-type">
                 {project.type}
               </div>
 
+              <h3>{project.title}</h3>
 
-              <h3>
-                {project.title}
-              </h3>
+              <h4>{project.subtitle}</h4>
 
-
-              <h4>
-                {project.subtitle}
-              </h4>
-
-
-              <p>
-                {project.description}
-              </p>
-
+              <p>{project.description}</p>
 
               <div className="project-tech">
-
                 {project.tech.map((item) => (
-
-                  <span key={item}>
-                    {item}
-                  </span>
-
+                  <span key={item}>{item}</span>
                 ))}
-
               </div>
 
-
               <div className="project-footer">
-
                 <span>
                   {project.number} / 07
                 </span>
 
-                <span>
-                  CASE STUDY
-                </span>
-
+                <span>CASE STUDY</span>
               </div>
-
             </div>
 
-
-            {/* PROGRESS */}
-
-            <div className="project-progress"></div>
-
+            <div className="project-progress" />
           </article>
-
         ))}
-
       </div>
 
-
-      {/* END */}
-
       <div className="projects-end">
-
-        <span>
-          MORE PROJECTS
-        </span>
+        <span>MORE PROJECTS</span>
 
         <h3>
           STILL
           <br />
-
-          <strong>
-            BUILDING.
-          </strong>
+          <strong>BUILDING.</strong>
         </h3>
 
-        <div className="projects-line"></div>
-
+        <div className="projects-line" />
       </div>
-
     </section>
   );
 }
